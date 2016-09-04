@@ -2,9 +2,9 @@
 import RenderSprites from "./Renderers/RenderSprites";
 
 export const RendererList: ControllerType[] = [
-	RenderSprites
+    RenderSprites
 ];
 
 interface ControllerType extends Function {
-	displayName: string;
+    displayName: string;
 }

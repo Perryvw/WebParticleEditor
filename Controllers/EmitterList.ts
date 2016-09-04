@@ -3,10 +3,10 @@ import EmitInstant from "./Emitters/EmitInstant";
 import EmitContinuous from "./Emitters/EmitContinuous";
 
 export const EmitterList: ControllerType[] = [
-	EmitInstant,
-	EmitContinuous
+    EmitInstant,
+    EmitContinuous
 ];
 
 interface ControllerType extends Function {
-	displayName: string;
+    displayName: string;
 }

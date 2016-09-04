@@ -2,17 +2,17 @@ interface Emitter extends Controller {
     callback: Function;
 
     /**
-    	Start spawning.
+        Start spawning.
     */
     start(): void;
 
     /**
-    	Stop emitting.
+        Stop emitting.
     */
     stop(): void;
     
     /**
-    	Advance the Emitter's internal clock.
+        Advance the Emitter's internal clock.
     */
     tick(frameTime: number): void;
 }

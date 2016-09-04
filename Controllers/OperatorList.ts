@@ -3,10 +3,10 @@ import MovementBasic from "./Operators/MovementBasic";
 import LifetimeDecay from "./Operators/LifetimeDecay";
 
 export const OperatorList: ControllerType[] = [
-	MovementBasic,
-	LifetimeDecay
+    MovementBasic,
+    LifetimeDecay
 ];
 
 interface ControllerType extends Function {
-	displayName: string;
+    displayName: string;
 }

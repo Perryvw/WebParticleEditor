@@ -1,27 +1,27 @@
 export default class Dialog {
 
-	element: HTMLElement;
-	onResult: (result: any) => void;
+    element: HTMLElement;
+    onResult: (result: any) => void;
 
-	constructor(element: HTMLElement) {
-		this.element = element;
-		this.onResult = function() {};
-	}
+    constructor(element: HTMLElement) {
+        this.element = element;
+        this.onResult = function() {};
+    }
 
-	close() {
-		this.onDestroy();
-		this.element.parentElement.removeChild(this.element);
-	}
+    close() {
+        this.onDestroy();
+        this.element.parentElement.removeChild(this.element);
+    }
 
-	onCreated(params: Object) {
+    onCreated(params: Object) {
 
-	}
+    }
 
-	onDestroy() {
+    onDestroy() {
 
-	}
+    }
 
-	result(result: any) {
-		this.onResult(result);
-	}
+    result(result: any) {
+        this.onResult(result);
+    }
 }
