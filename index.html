@@ -1,0 +1,175 @@
+<html>
+    <head>
+        <script type="text/javascript" src="lib/require.js"></script>
+        <script type="text/javascript" src="editor.js"></script>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: "Arial";
+            }
+
+            #side1 {
+                float: left;
+                width: 300px;
+                height: 100%;
+                background-color:#f00;
+            }
+
+            #side2 {
+                float: left;
+                width: 300px;
+                height: 100%;
+                background-color:#ff0;
+                position: relative;
+            }
+
+            #canvas {
+                position: absolute;
+                top: 35px;
+                right: 0px;
+                background-color: #000;
+            }
+
+            .ControllerBtn {
+                width: 270px;
+                margin-left: 10px;
+                height: 20px;
+                border-radius: 5px;
+                background-color: #ddd;
+                padding: 5px;
+                cursor: pointer;
+                margin-top: 2px;
+                margin-bottom: 2px;
+            }
+
+            .ControllerBtn:hover {
+                background-color: #ccc;
+            }
+
+            .ControllerOption {
+                padding: 2px 5px 5px 5px;
+                border-style: solid;
+                border-color: #000;
+                border-width: 0px 0px 1px 0px;
+            }
+
+            .ControllerOptionTick {
+                float: right;
+                margin-right: 50px;
+            }
+
+            .ControllerOptionNumber {
+                width: 100px;
+                float: right;
+            }
+
+            .ControllerOptionVectorComponent {
+                width: 50px;
+                float: right;
+                margin-left: 5px;
+            }
+
+            .Dialog {
+                min-width: 100p;
+                min-height: 100p;
+                background-color: #0f0;
+                position: absolute;
+                z-index: 100;
+                top: 50%;
+                left: 50%;
+                margin-top: -50px;
+                margin-left: -50px;
+            }
+
+            .DialogCloseButton {
+                position: absolute;
+                width: 40px;
+                height: 18px;
+                background-color: #f00;
+                color: #fff;
+                top: 0px;
+                right: 5px;
+                text-align: center;
+                padding-top: 2px;
+                text-decoration: none;
+            }
+
+            .ControllerSelectOption {
+                display: block;
+                width: 290px;
+                padding-left: 10px;
+                padding-top: 3px;
+                padding-bottom: 3px;
+                margin-bottom: 1px;
+                background-color: #fff;
+            }
+
+            .ControllerSelectOption:hover {
+                background-color: #eee;
+            }
+
+            #controlsBar {
+                position: absolute;
+                right: 0px;
+                width: calc(100% - 600px);
+                height: 32px;
+                background-color: #f0f;
+                z-index: 10;
+                padding-top: 3px;
+            }
+
+            .controlsButton {
+                display: inline-block;
+                width: 30px;
+                height: 25px;
+                background-color: #000;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 5px;
+                text-align: center;
+                padding-top: 5px;
+                margin-left: 5px;
+            }
+
+            .controlsInfo {
+                float: right;
+                display: inline-block;
+                width: 110px;
+                margin-top: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="side1">
+            <div id="optionList"></div>
+        </div>
+        <div id="side2">
+            Renderers <button id="Add1">Add</button>
+            <div id="CList1"></div>
+            Operators <button id="Add2">Add</button>
+            <div id="CList2"></div>
+            Initializers <button id="Add3">Add</button>
+            <div id="CList3"></div>
+            Emitters <button id="Add4">Add</button>
+            <div id="CList4"></div>
+        </div>
+        <div id="controlsBar">
+            <a href="#" id="PlayBtn" class="controlsButton" title="Play" >|></a>
+            <a href="#" id="PauseBtn" class="controlsButton" title="Pause/Resume" >||</a>
+            <a href="#" id="StopBtn" class="controlsButton" title="Stop (endcap)" >|*|</a>
+            <a href="#" id="StopBtn2" class="controlsButton" title="Stop instantly" >|-|</a>
+            <span id="particleInfo" class="controlsInfo">Particles: 0</span>
+            <span id="fpsInfo" class="controlsInfo">FPS: 0</span>
+        </div>
+        <canvas id="canvas"></canvas>
+        <script type="text/javascript">
+            requirejs(["lib/gl-matrix-min"], function(glMatrix) {
+                for (var key in glMatrix) {
+                    this[key] = glMatrix[key];
+                }
+                require(["ParticleEditor"]);
+                });
+            </script>
+    </body>
+</html>

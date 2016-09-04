@@ -1,0 +1,37 @@
+{
+    "compilerOptions": {
+        "module": "amd",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "outFile": "editor.js",
+        "sourceMap": true
+    },
+    "files": [
+        // Lib files
+        "lib/gl-matrix.d.ts",
+
+        // Main file
+        "ParticleEditor.ts",
+
+        // Dialogs
+        "Dialog.ts",
+        "DialogManager.ts",
+
+        // Render window
+        "RenderWindow.ts",
+        "Camera.ts",
+        "ShaderManager.ts",
+        
+        // Particle system
+        "Particle.ts",
+        "ParticleSystem.ts",
+
+        // Controllers
+        "ControllerOption.ts",
+        "Controller.ts",
+        "Emitter.ts",
+        "Initializer.ts",
+        "Operator.ts",
+        "Renderer.ts"
+    ]
+}
