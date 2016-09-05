@@ -44,6 +44,7 @@ class ParticleEditor {
             // Make renderer and add it to the UI
             let renderer = new result(this.renderWindow.gl);
             this.addControllerButton(renderer, elem("CList1"));
+            renderer.onRemove = () => this.removeController(renderer, this.system.renderers);
 
             // Add renderer to particle system
             this.system.renderers.push(renderer);
@@ -61,6 +62,7 @@ class ParticleEditor {
             // Make renderer and add it to the UI
             let operator = new result();
             this.addControllerButton(operator, elem("CList2"));
+            operator.onRemove = () => this.removeController(operator, this.system.operators);
 
             // Add renderer to particle system
             this.system.operators.push(operator);
@@ -78,6 +80,7 @@ class ParticleEditor {
             // Make renderer and add it to the UI
             let initializer = new result();
             this.addControllerButton(initializer, elem("CList3"));
+            initializer.onRemove = () => this.removeController(initializer, this.system.initializers);
 
             // Add renderer to particle system
             this.system.initializers.push(initializer);
@@ -95,6 +98,7 @@ class ParticleEditor {
             // Make renderer and add it to the UI
             let emitter = new result(this.system.onParticleSpawn.bind(this.system));
             this.addControllerButton(emitter, elem("CList4"));
+            emitter.onRemove = () => this.removeController(emitter, this.system.emitters);
 
             // Add renderer to particle system
             this.system.emitters.push(emitter);
@@ -111,6 +115,11 @@ class ParticleEditor {
         let button = controller.getButton();
         button.addEventListener("click", (ev: UIEvent) => this.controllerClick(ev, controller));
         targetList.appendChild(button);
+    }
+
+    removeController(controller: Controller, list: Controller[]) {
+        list.splice(list.indexOf(controller), 1)
+        this.system.restart();
     }
 
     controllerClick(ev: UIEvent, controller: Controller) {

@@ -5,6 +5,7 @@ class Controller {
 
     param: {[key: string]: any};
 
+    onRemove: () => void = function() {};
     onParamChanged: (key: string, value: any) => void = function(key: string, value: any) {};
 
     constructor() {
@@ -25,6 +26,14 @@ class Controller {
 
         let textNode = document.createTextNode((<ControllerType>this.constructor).displayName);
         elem.appendChild(textNode);
+
+        let closeBtn = document.createElement("a");
+        closeBtn.innerHTML = "X";
+        closeBtn.className = "RemoveControllerButton";
+        closeBtn.setAttribute("href", "#");
+        closeBtn.addEventListener("click", (ev: MouseEvent) => { ev.preventDefault(); this.onRemove(); elem.parentElement.removeChild(elem); });
+
+        elem.appendChild(closeBtn);
 
         return elem;
     }
